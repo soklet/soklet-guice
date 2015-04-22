@@ -2,7 +2,7 @@
 
 #### What Is It?
 
-Minimalist infrastructure for Java webapps and microservices.
+[Guice](https://github.com/google/guice) integration for [Soklet](http://soklet.com), a minimalist infrastructure for Java webapps and microservices.
 
 #### License
 
