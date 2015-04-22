@@ -15,7 +15,7 @@
  */
 
 /**
- * Basic <a href="https://github.com/google/guice">Guice</a> integration for <a href="http://soklet.com">Soklet</a>.
+ * <a href="https://github.com/google/guice">Guice</a> integration for <a href="http://soklet.com">Soklet</a>.
  * 
  * @author <a href="http://revetkn.com">Mark Allen</a>
  * @since 1.0.0
