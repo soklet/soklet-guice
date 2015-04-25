@@ -24,12 +24,22 @@ import com.google.inject.Injector;
 import com.google.inject.Provides;
 import com.soklet.converter.ValueConverterRegistry;
 import com.soklet.util.InstanceProvider;
-import com.soklet.web.DefaultRequestHandler;
-import com.soklet.web.DefaultResponseHandler;
-import com.soklet.web.DefaultRouteMatcher;
-import com.soklet.web.RequestHandler;
-import com.soklet.web.ResponseHandler;
-import com.soklet.web.RouteMatcher;
+import com.soklet.web.DefaultExceptionStatusMapper;
+import com.soklet.web.ExceptionStatusMapper;
+import com.soklet.web.request.DefaultRequestHandler;
+import com.soklet.web.request.RequestHandler;
+import com.soklet.web.response.ApiResponseWriter;
+import com.soklet.web.response.BinaryResponseWriter;
+import com.soklet.web.response.DefaultApiResponseWriter;
+import com.soklet.web.response.DefaultBinaryResponseWriter;
+import com.soklet.web.response.DefaultPageResponseWriter;
+import com.soklet.web.response.DefaultRedirectResponseWriter;
+import com.soklet.web.response.DefaultResponseHandler;
+import com.soklet.web.response.PageResponseWriter;
+import com.soklet.web.response.RedirectResponseWriter;
+import com.soklet.web.response.ResponseHandler;
+import com.soklet.web.routing.DefaultRouteMatcher;
+import com.soklet.web.routing.RouteMatcher;
 
 /**
  * A <a href="https://github.com/google/guice">Guice</a> module that provides default implementations of <a
@@ -58,10 +68,44 @@ public class SokletModule extends AbstractModule {
    * 
    * @return a {@link ResponseHandler}
    */
+  @Inject
   @Provides
   @Singleton
-  public ResponseHandler provideResponseHandler() {
-    return new DefaultResponseHandler();
+  public ResponseHandler provideResponseHandler(PageResponseWriter pageResponseWriter,
+      ApiResponseWriter apiResponseWriter, BinaryResponseWriter binaryResponseWriter,
+      RedirectResponseWriter redirectResponseWriter, ExceptionStatusMapper exceptionStatusMapper) {
+    return new DefaultResponseHandler(pageResponseWriter, apiResponseWriter, binaryResponseWriter,
+      redirectResponseWriter, exceptionStatusMapper);
+  }
+
+  @Provides
+  @Singleton
+  public PageResponseWriter providePageResponseWriter() {
+    return new DefaultPageResponseWriter();
+  }
+
+  @Provides
+  @Singleton
+  public ApiResponseWriter provideApiResponseWriter() {
+    return new DefaultApiResponseWriter();
+  }
+
+  @Provides
+  @Singleton
+  public BinaryResponseWriter provideBinaryResponseWriter() {
+    return new DefaultBinaryResponseWriter();
+  }
+
+  @Provides
+  @Singleton
+  public RedirectResponseWriter provideRedirectResponseWriter() {
+    return new DefaultRedirectResponseWriter();
+  }
+
+  @Provides
+  @Singleton
+  public ExceptionStatusMapper provideExceptionStatusMapper() {
+    return new DefaultExceptionStatusMapper();
   }
 
   /**
