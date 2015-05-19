@@ -4,8 +4,6 @@
 
 [Guice](https://github.com/google/guice) integration for [Soklet](http://soklet.com), a minimalist infrastructure for Java webapps and microservices.
 
-**Note:** Soklet is under active development and will be ready for production use soon.
-
 #### License
 
 [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
@@ -16,14 +14,13 @@
 <dependency>
   <groupId>com.soklet</groupId>
   <artifactId>soklet-guice</artifactId>
-  <version>0.1.0</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
 #### Direct Download
 
-Coming soon, will coincide with 1.0.0 release
-<!-- [https://www.soklet.com/releases/soklet-1.0.0.jar](https://www.soklet.com/releases/soklet-1.0.0.jar) -->
+If you don't use Maven, you can drop [soklet-guice-1.0.0.jar](http://central.maven.org/maven2/com/soklet/soklet-guice/1.0.0/soklet-guice-1.0.0.jar) directly into your project.  You'll also need [Guice 4.0](https://github.com/google/guice) as a dependency.
 
 ## Example Code
 
