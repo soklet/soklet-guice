@@ -61,3 +61,7 @@ class AppModule extends AbstractModule {
   }
 }
 ```
+
+## About
+
+Soklet Guice was created by [Mark Allen](http://revetkn.com) and sponsored by [Transmogrify, LLC.](http://xmog.com)
