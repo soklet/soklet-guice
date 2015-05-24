@@ -14,13 +14,13 @@
 <dependency>
   <groupId>com.soklet</groupId>
   <artifactId>soklet-guice</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
 </dependency>
 ```
 
 #### Direct Download
 
-If you don't use Maven, you can drop [soklet-guice-1.0.1.jar](http://central.maven.org/maven2/com/soklet/soklet-guice/1.0.1/soklet-guice-1.0.1.jar) directly into your project.  You'll also need [Guice 4.0](https://github.com/google/guice) as a dependency.
+If you don't use Maven, you can drop [soklet-guice-1.0.2.jar](http://central.maven.org/maven2/com/soklet/soklet-guice/1.0.2/soklet-guice-1.0.2.jar) directly into your project.  You'll also need [Guice 4.0](https://github.com/google/guice) as a dependency.
 
 ## Example Code
 
@@ -36,11 +36,28 @@ public static void main(String[] args) throws Exception {
 }
 
 class AppModule extends AbstractModule {
-  @Inject
+  // SokletMatchers.httpMethodMatcher() is a Guice Matcher which matches any resource method.
+  // For example, methods annotated with @GET("/test") and @DELETE("/users/{id}") would be matched.
+  // This is useful for applying method interceptors to handle security, database transactions, and more
+  @Override
+  protected void configure() {
+    bindInterceptor(Matchers.annotatedWith(Resource.class),
+      SokletMatchers.httpMethodMatcher(), new MyCustomInterceptor());
+  }
+
+  // Use Guice as you would normally
   @Provides
   @Singleton
   public Server provideServer(InstanceProvider instanceProvider) {
     return JettyServer.forInstanceProvider(instanceProvider).port(8080).build();
+  }  
+
+  // Override Soklet's default implementations as needed
+  @Provides
+  @Singleton
+  public PageResponseWriter providePageResponseWriter() {
+    // My app should use a custom Mustache.java-backed page response writer
+    return new MyMustachePageResponseWriter();
   }
 }
 ```
