@@ -27,6 +27,7 @@ import com.soklet.util.InstanceProvider;
 import com.soklet.web.exception.DefaultExceptionStatusMapper;
 import com.soklet.web.exception.ExceptionStatusMapper;
 import com.soklet.web.request.DefaultRequestHandler;
+import com.soklet.web.request.RequestContext;
 import com.soklet.web.request.RequestHandler;
 import com.soklet.web.response.DefaultResponseHandler;
 import com.soklet.web.response.ResponseHandler;
@@ -106,6 +107,12 @@ public class SokletModule extends AbstractModule {
   @Singleton
   public ExceptionStatusMapper provideExceptionStatusMapper() {
     return new DefaultExceptionStatusMapper();
+  }
+
+  @Provides
+  @Singleton
+  public RequestContext provideRequestContext() {
+    return RequestContext.get();
   }
 
   /**
