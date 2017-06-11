@@ -110,7 +110,6 @@ public class SokletModule extends AbstractModule {
   }
 
   @Provides
-  @Singleton
   public RequestContext provideRequestContext() {
     return RequestContext.get();
   }
