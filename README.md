@@ -14,13 +14,13 @@
 <dependency>
   <groupId>com.soklet</groupId>
   <artifactId>soklet-guice</artifactId>
-  <version>1.0.6</version>
+  <version>2.0.0-SNAPSHOT</version>
 </dependency>
 ```
 
 #### Direct Download
 
-If you don't use Maven, you can drop [soklet-guice-1.0.6.jar](http://central.maven.org/maven2/com/soklet/soklet-guice/1.0.6/soklet-guice-1.0.6.jar) directly into your project.  You'll also need [Guice 4.0](https://github.com/google/guice) as a dependency.
+If you don't use Maven, you can drop [soklet-guice-2.0.0-SNAPSHOT.jar](https://repo.maven.apache.org/maven2/com/soklet/soklet-guice/2.0.0-SNAPSHOT/soklet-guice-2.0.0-SNAPSHOT.jar) directly into your project.  You'll also need [Guice 5.x.x](https://github.com/google/guice) as a dependency.
 
 ## Example Code
 
